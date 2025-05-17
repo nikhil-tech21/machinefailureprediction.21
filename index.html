@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Machine Failure Prediction</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-image: url('/static/image3.jpeg');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center;
+        }
+        .container {
+            margin-top: 50px;
+        }
+        .form-container {
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            background-image: url('/static/image2.jpg');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center;
+        }
+        .result {
+            margin-top: 20px;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            background-color: moccasin;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="text-center">Machine Failure Prediction Form</h1>
+        <div class="form-container">
+            <form action="/pred" method="post">
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label for="footfall">Footfall:</label>
+                        <input type="number" class="form-control" id="footfall" name="footfall">
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="tempMode">Temp Mode:</label>
+                        <input type="number" class="form-control" id="tempMode" name="tempMode">
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label for="AQ">Air Quality Index:</label>
+                        <input type="number" class="form-control" id="AQ" name="AQ">
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="USS">Ultrasonic sensor data:</label>
+                        <input type="number" class="form-control" id="USS" name="USS">
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label for="CS">Current sensor readings:</label>
+                        <input type="number" class="form-control" id="CS" name="CS">
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="VOC">Volatile organic compounds level:</label>
+                        <input type="number" class="form-control" id="VOC" name="VOC">
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label for="RP">Rotational position or RPM:</label>
+                        <input type="number" class="form-control" id="RP" name="RP">
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="IP">Input Pressure:</label>
+                        <input type="number" class="form-control" id="IP" name="IP">
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label for="Temperature">Temperature:</label>
+                        <input type="number" class="form-control" id="Temperature" name="Temperature">
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-primary btn-block">Predict</button>
+            </form>
+        </div>
+        {% if prediction %}
+        <div class="result">
+            <h2>Prediction Result</h2>
+            <p>Based on the provided information,  <strong>{{ prediction }}</strong></p>
+        </div>
+        {% endif %}
+    </div>
+    <!-- Bootstrap JS and dependencies -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
